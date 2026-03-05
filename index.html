@@ -1,150 +1,694 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Davin Valerian - Profile</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<style>
-:root{
-    --base:#EFECE3;
-    --primary:#8FABD4;
-    --secondary:#4A70A9;
-    --accent:#000000;
-}
-body{
-    background-color:var(--base);
-    scroll-behavior:smooth;
-}
-.navbar{
-    background-color:var(--secondary);
-}
-.navbar a{
-    color:white !important;
-}
-.hero{
-    padding:100px 0;
-}
-.btn-primary{
-    background-color:var(--secondary);
-    border:none;
-}
-.section-title{
-    color:var(--secondary);
-    margin-bottom:30px;
-}
-.card{
-    border:none;
-}
-footer{
-    background-color:var(--secondary);
-    color:white;
-    padding:20px;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Davin Valerian - Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts: Montserrat for bold, modern look -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Aturan 4 Color Palette */
+            --base: #EFECE3;      /* Beige / Off-white */
+            --primary: #8FABD4;   /* Light Blue */
+            --secondary: #4A70A9; /* Dark Blue */
+            --accent: #000000;    /* Black */
+        }
+        
+        body {
+            background-color: var(--base);
+            color: var(--accent);
+            font-family: 'Montserrat', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        /* --- NAVBAR --- */
+        .navbar {
+            background-color: var(--base);
+            padding: 1.2rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+        }
+        .navbar-brand {
+            font-weight: 900;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            color: var(--accent) !important;
+        }
+        .nav-link {
+            color: var(--accent) !important;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+        .nav-link:hover {
+            color: var(--secondary) !important;
+        }
+        .navbar-toggler {
+            border: none;
+        }
+
+        /* --- HERO SECTION (Screenshot Style) --- */
+        .hero {
+            position: relative;
+            background-color: var(--base);
+            height: 100vh;
+            min-height: 600px;
+            display: flex;
+            align-items: center; /* Diubah agar vertikal ke tengah */
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 80px; /* Offset for fixed navbar */
+        }
+        .hero-giant-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14vw; 
+            font-weight: 900;
+            color: var(--accent); /* Diubah jadi hitam agar kontras dengan background terang */
+            z-index: 1;
+            margin: 0;
+            line-height: 0.85; 
+            letter-spacing: -0.02em;
+            white-space: nowrap;
+            text-align: center;
+        }
+        
+        /* Animasi Cursor Mengetik */
+        .cursor {
+            display: inline-block;
+            color: var(--primary);
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .hero-img-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            height: 23vw; /* Presisi mengunci tinggi teks: 14vw * 0.85 line-height * 2 baris */
+            display: flex;
+            align-items: center; 
+            justify-content: center;
+        }
+        .hero-img-container img {
+            height: 100%; /* Memastikan foto pas dengan batas atas dan bawah teks */
+            width: auto;
+            object-fit: contain;
+            filter: drop-shadow(0 15px 25px rgba(0,0,0,0.15)); /* Shadow diperhalus untuk bg terang */
+        }
+
+        /* --- BUTTONS --- */
+        .btn-primary-custom {
+            background-color: var(--secondary);
+            color: var(--base);
+            border: none;
+            font-weight: 700;
+            padding: 12px 28px;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-primary-custom:hover {
+            background-color: var(--primary);
+            color: var(--accent);
+        }
+        .btn-dark-custom {
+            background-color: var(--accent);
+            color: var(--base);
+            border: 2px solid var(--accent);
+            font-weight: 700;
+            padding: 10px 28px;
+            border-radius: 5px;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+        .btn-dark-custom:hover {
+            background-color: transparent;
+            color: var(--accent);
+            border: 2px solid var(--accent);
+        }
+
+        /* --- GLOBAL SECTIONS --- */
+        .section-title {
+            font-weight: 900;
+            text-transform: uppercase;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            font-size: 2.5rem;
+        }
+        .py-custom {
+            padding: 100px 0;
+        }
+
+        /* --- ABOUT SECTION --- */
+        #about {
+            background-color: var(--primary); /* Diubah jadi Light Blue agar selang-seling */
+            color: var(--accent);
+        }
+        #about .section-title {
+            color: var(--accent);
+        }
+        .badge-custom {
+            background-color: var(--accent);
+            color: var(--base);
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 8px 15px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* --- WORK SECTION --- */
+        #work {
+            background-color: var(--secondary);
+            color: var(--base);
+        }
+        #work .section-title {
+            color: var(--base);
+        }
+        #work .card {
+            background-color: var(--base);
+            color: var(--accent);
+            border: none;
+            border-bottom: 6px solid var(--primary);
+            border-radius: 12px;
+            height: 100%;
+            transition: transform 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        #work .card:hover {
+            transform: translateY(-5px);
+        }
+        #work .card-category {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 10px;
+            display: block;
+        }
+        #work .card-title-custom {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent);
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        
+        /* Badge Khusus Work */
+        .badge-tech {
+            background-color: var(--secondary);
+            color: var(--base);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+        .badge-tool {
+            background-color: var(--accent);
+            color: var(--base);
+            font-weight: 600;
+            font-size: 0.8rem;
+            padding: 6px 12px;
+            border-radius: 4px;
+            margin-right: 4px;
+            margin-bottom: 4px;
+            display: inline-block;
+        }
+
+        /* --- JOURNEY SECTION (TIMELINE) --- */
+        #journey {
+            background-color: var(--base); /* Diubah jadi Beige */
+            color: var(--accent);
+        }
+        #journey .section-title {
+            color: var(--secondary);
+        }
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+            padding-left: 2rem;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--primary);
+            border-radius: 5px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2.5rem;
+        }
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.45rem; /* Menyesuaikan posisi titik agar tepat di tengah garis */
+            top: 5px;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background-color: var(--secondary);
+            border: 4px solid var(--base);
+            box-shadow: 0 0 0 3px var(--primary);
+        }
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+        .timeline-content {
+            background-color: rgba(74, 112, 169, 0.08); /* Warna secondary transparan */
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid var(--secondary);
+            transition: transform 0.3s ease;
+        }
+        .timeline-content:hover {
+            transform: translateX(5px);
+        }
+        .timeline-content h5 {
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        /* --- CONNECT SECTION --- */
+        #connect {
+            background-color: var(--accent);
+            color: var(--base);
+        }
+        #connect .section-title {
+            color: var(--primary);
+        }
+        #connect p {
+            font-size: 1.1rem;
+        }
+        #connect .btn-outline-light {
+            border-color: var(--base);
+            color: var(--base);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        #connect .btn-outline-light:hover {
+            background-color: var(--base);
+            color: var(--accent);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: var(--accent);
+            color: var(--primary);
+            padding: 30px 0;
+            border-top: 1px solid rgba(143, 171, 212, 0.2);
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        /* --- RESPONSIVE ADJUSTMENTS --- */
+        @media (max-width: 992px) {
+            .hero-giant-text {
+                font-size: 18vw;
+                top: 50%;
+            }
+            .hero-img-container {
+                height: 30vw; /* Presisi tinggi teks tablet: 18vw * 0.85 * 2 baris */
+            }
+        }
+        @media (max-width: 768px) {
+            .hero-img-container {
+                height: 40vw; /* Presisi tinggi teks mobile: 24vw * 0.85 * 2 baris */
+            }
+            .hero-giant-text {
+                top: 50%;
+                font-size: 24vw; 
+            }
+            .navbar-nav {
+                text-align: center;
+                padding-top: 1rem;
+            }
+            .nav-link {
+                margin: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg fixed-top">
-<div class="container">
-<a class="navbar-brand text-white" href="#">Davin Valerian</a>
-<button class="navbar-toggler bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-<span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarNav">
-<ul class="navbar-nav ms-auto">
-<li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-<li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-<li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
-<li class="nav-item"><a class="nav-link" href="#journey">My Journey</a></li>
-<li class="nav-item"><a class="nav-link" href="#connect">Connect</a></li>
-</ul>
-</div>
-</div>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg fixed-top navbar-light">
+    <div class="container">
+        <a class="navbar-brand" href="#home">DV</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#work">Work</a></li>
+                <li class="nav-item"><a class="nav-link" href="#journey">Journey</a></li>
+                <li class="nav-item"><a class="nav-link" href="#connect">Connect</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
-<section id="home" class="hero container text-center mt-5 pt-5">
-<img src="assets/img/profil.png" class="img-fluid rounded mb-4" width="300">
-<h1>Davin Valerian</h1>
-<p class="lead">Individu yang berkembang melalui teknologi, bisnis, dan pengalaman organisasi.</p>
-<p>Membangun kemampuan melalui proyek nyata, kepemimpinan, dan konsistensi jangka panjang.</p>
-<a href="#work" class="btn btn-primary m-2">Lihat Karya</a>
-<a href="#connect" class="btn btn-dark m-2">Hubungi Saya</a>
+<!-- HERO SECTION -->
+<header id="home" class="hero">
+    <h1 class="hero-giant-text" id="typewriter-text">DAVIN<br>VALERIAN</h1>
+    
+    <div class="hero-img-container">
+        <img src="assets/img/profil-nobg.png" alt="Davin Valerian" onerror="this.src='https://cdn.pixabay.com/photo/2021/07/02/04/48/user-6380868_1280.png'">
+    </div>
+</header>
+
+<!-- ABOUT SECTION -->
+<section id="about" class="container-fluid py-custom">
+    <div class="container">
+        <h2 class="section-title text-center">About</h2>
+        <div class="row justify-content-center">
+            <div class="col-lg-9">
+                <p class="lead fw-bold mb-3 fs-2" style="color: var(--accent);">
+                    Halo, saya Davin Valerian.
+                </p>
+                <p class="fs-4 mb-4 fw-bold" style="color: var(--accent);">
+                    Mahasiswa yang aktif mengembangkan diri melalui pengalaman nyata di bidang kepemimpinan organisasi dan bisnis.
+                </p>
+                
+                <p class="mb-3 fs-5">
+                    Melalui keterlibatan di organisasi, salah satunya sebagai Sekretaris BPH UKM KSPM dan ketua program kerja, saya terbiasa mengelola tanggung jawab, berkoordinasi dalam tim, serta menjalankan manajemen kegiatan secara efektif.
+                </p>
+                
+                <p class="mb-5 fs-5">
+                    Di samping itu, saya juga mengelola bisnis mandiri bernama <strong>brownie.ind</strong> selama lebih dari 4 tahun. Kedua dunia ini mengajarkan saya bahwa pertumbuhan yang nyata selalu dibangun di atas kedisiplinan, konsistensi, dan kemauan untuk terus belajar.
+                </p>
+                
+                <div class="mb-5">
+                    <span class="badge-custom">Disiplin</span>
+                    <span class="badge-custom">Konsistensi</span>
+                    <span class="badge-custom">Tanggung Jawab</span>
+                    <span class="badge-custom">Growth Mindset</span>
+                </div>
+                
+                <div>
+                    <a href="#work" class="btn btn-primary-custom me-2 mb-2">Lihat Karya</a>
+                    <a href="#connect" class="btn btn-dark-custom mb-2">Hubungi Saya</a>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="about" class="container py-5">
-<h2 class="section-title text-center">About</h2>
-<div class="row">
-<div class="col-md-6">
-<img src="assets/img/organisasi.png" class="img-fluid rounded">
-</div>
-<div class="col-md-6">
-<p><strong>Nama Lengkap:</strong> Davin Valerian</p>
-<p><strong>Fokus:</strong> Teknologi, Manajemen, Kepemimpinan</p>
-<p><strong>Status:</strong> Mahasiswa aktif</p>
-<p>Saya adalah individu yang percaya bahwa pertumbuhan dibangun melalui pengalaman nyata dan tanggung jawab.
-Aktif sebagai Sekretaris BPH UKM KSPM serta Founder brownie.ind yang telah berjalan lebih dari 4 tahun.</p>
-<ul>
-<li>Disiplin</li>
-<li>Konsistensi</li>
-<li>Tanggung Jawab</li>
-<li>Growth Mindset</li>
-</ul>
-</div>
-</div>
+<!-- WORK SECTION -->
+<section id="work" class="container-fluid py-custom">
+    <div class="container">
+        <h2 class="section-title text-center">Work</h2>
+        
+        <!-- 1. MBKM Research (Baru Ditambahkan) -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-10">
+                <div class="card p-4 p-md-5">
+                    <span class="card-category">MBKM Research (Ongoing)</span>
+                    <h4 class="card-title-custom">Analisis Explainability Deep Learning untuk Klasifikasi Tumor Otak pada MRI T2-Weighted Menggunakan Grad-CAM</h4>
+                    <p>Penelitian MBKM yang saat ini sedang berjalan. Proyek ini berfokus pada penerapan <em>Explainable AI</em> (XAI) menggunakan metode Gradient-weighted Class Activation Mapping (Grad-CAM) untuk mengevaluasi dan memvisualisasikan bagaimana model Deep Learning mengambil keputusan dalam mengklasifikasikan tumor otak melalui citra MRI. Tujuan utamanya adalah untuk memberikan interpretasi yang transparan dan dapat dipercaya pada model AI medis.</p>
+                    <p class="small text-muted mb-4"><em>Status: Sedang Berjalan (In Progress)</em></p>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <h6 class="fw-bold text-uppercase" style="color: var(--secondary); font-size: 0.9rem;">Metode:</h6>
+                            <div>
+                                <span class="badge badge-tech">Deep Learning</span>
+                                <span class="badge badge-tech">Explainable AI (XAI)</span>
+                                <span class="badge badge-tech">Grad-CAM</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-uppercase" style="color: var(--secondary); font-size: 0.9rem;">Tools / Bahasa:</h6>
+                            <div>
+                                <span class="badge badge-tool">Python</span>
+                                <span class="badge badge-tool">TensorFlow / Keras</span>
+                                <span class="badge badge-tool">Computer Vision</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <span class="btn btn-outline-secondary btn-sm" style="pointer-events: none; border-color: var(--secondary); color: var(--secondary); font-weight: 700;">Riset Sedang Berlangsung</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. Academic Projects -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-10">
+                <div class="card p-4 p-md-5">
+                    <span class="card-category">Academic Projects</span>
+                    <h4 class="card-title-custom">Jurnal Akademik – Klasifikasi Ekspresi Wajah</h4>
+                    <p>Penelitian ini membahas perbandingan performa beberapa model deep learning dalam mengenali ekspresi wajah senang (happy) dan sedih (sad) menggunakan dataset FER2013. Model yang diuji meliputi VGG16, ResNet50, dan MobileNetV2 untuk mengetahui model dengan akurasi terbaik dalam klasifikasi ekspresi wajah. Hasil penelitian menunjukkan bahwa VGG16 memiliki performa terbaik dengan akurasi pengujian sebesar 85.14%.</p>
+                    <p class="small text-muted mb-4"><em>Full Paper SEMNAS 2025 </em></p>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <h6 class="fw-bold text-uppercase" style="color: var(--secondary); font-size: 0.9rem;">Metode:</h6>
+                            <div>
+                                <span class="badge badge-tech">Convolutional Neural Network (CNN)</span>
+                                <span class="badge badge-tech">Transfer Learning</span>
+                                <span class="badge badge-tech">Image Classification</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-uppercase" style="color: var(--secondary); font-size: 0.9rem;">Tools / Bahasa:</h6>
+                            <div>
+                                <span class="badge badge-tool">Python</span>
+                                <span class="badge badge-tool">TensorFlow & Keras</span>
+                                <span class="badge badge-tool">Google Colab (GPU)</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <a href="https://drive.google.com/file/d/1oGc0iE4XMzIIGuKpDpEKsSFxzLWh65LR/view" target="_blank" class="btn btn-dark-custom btn-sm">Lihat Jurnal</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. Web Development -->
+        <div class="row justify-content-center mb-4">
+            <div class="col-lg-10">
+                <div class="card p-4 p-md-5">
+                    <span class="card-category">Web Development</span>
+                    <h4 class="card-title-custom">Website brownie.ind</h4>
+                    <p>Proyek ini merupakan pengembangan website sederhana untuk brand brownie.ind, yang bertujuan menampilkan informasi produk, memperkuat branding usaha, serta memperkenalkan bisnis secara digital kepada pelanggan. Website ini dirancang dengan tampilan yang sederhana dan responsif sehingga dapat diakses dengan baik melalui berbagai perangkat.</p>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6 mb-3 mb-md-0">
+                            <h6 class="fw-bold text-uppercase" style="color: var(--secondary); font-size: 0.9rem;">Tujuan Pengembangan:</h6>
+                            <ul class="small mb-0">
+                                <li class="mb-1">Menyediakan media informasi digital untuk usaha.</li>
+                                <li class="mb-1">Meningkatkan visibilitas usaha secara online.</li>
+                                <li class="mb-1">Menampilkan produk & informasi bisnis secara profesional.</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6 class="fw-bold text-uppercase" style="color: var(--secondary); font-size: 0.9rem;">Fitur Utama:</h6>
+                            <ul class="small mb-0">
+                                <li class="mb-1">Landing page pengenalan brand.</li>
+                                <li class="mb-1">Informasi produk & variasi topping.</li>
+                                <li class="mb-1">Tampilan galeri & navigasi mudah digunakan.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mb-4">
+                        <h6 class="fw-bold text-uppercase" style="color: var(--secondary); font-size: 0.9rem;">Teknologi:</h6>
+                        <div>
+                            <span class="badge badge-tool">HTML</span>
+                            <span class="badge badge-tool">CSS</span>
+                            <span class="badge badge-tool">Bootstrap</span>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <a href="https://seabreezed.github.io/brownieind-website/index.html" target="_blank" class="btn btn-dark-custom btn-sm">Kunjungi Website</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. Grid for Entrepreneurship & Organization -->
+        <div class="row justify-content-center g-4">
+            <div class="col-lg-10">
+                <div class="row g-4">
+                    <!-- Entrepreneurship -->
+                    <div class="col-md-4">
+                        <div class="card p-4 h-100">
+                            <span class="card-category">Entrepreneurship</span>
+                            <h5 class="fw-bold mb-3" style="color: var(--accent);">Founder brownie.ind</h5>
+                            <p class="m-0 small">Operasional, pemasaran, keuangan, pengembangan produk & quality control.</p>
+                        </div>
+                    </div>
+                    <!-- Org 1 -->
+                    <div class="col-md-4">
+                        <div class="card p-4 h-100">
+                            <span class="card-category">Organization</span>
+                            <h5 class="fw-bold mb-3" style="color: var(--accent);">Sekretaris BPH KSPM</h5>
+                            <p class="m-0 small">Administrasi, laporan kegiatan, dokumentasi resmi, serta koordinasi internal.</p>
+                        </div>
+                    </div>
+                    <!-- Org 2 -->
+                    <div class="col-md-4">
+                        <div class="card p-4 h-100">
+                            <span class="card-category">Organization</span>
+                            <h5 class="fw-bold mb-3" style="color: var(--accent);">Ketua Program Kerja</h5>
+                            <p class="m-0 small">Perencanaan konsep, koordinasi tim, timeline, hingga evaluasi kegiatan.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </section>
 
-<section id="work" class="container py-5">
-<h2 class="section-title text-center">Work</h2>
-<div class="row g-4">
-<div class="col-md-4">
-<div class="card p-3 shadow-sm">
-<h5>Sekretaris BPH UKM KSPM</h5>
-<p>Administrasi, laporan kegiatan, dokumentasi resmi, koordinasi internal.</p>
-</div>
-</div>
-<div class="col-md-4">
-<div class="card p-3 shadow-sm">
-<h5>Ketua Program Kerja</h5>
-<p>Perencanaan konsep, koordinasi tim, timeline, evaluasi kegiatan.</p>
-</div>
-</div>
-<div class="col-md-4">
-<div class="card p-3 shadow-sm">
-<h5>Founder brownie.ind</h5>
-<p>Operasional, pemasaran, keuangan, pengembangan produk & quality control.</p>
-</div>
-</div>
-</div>
+<!-- JOURNEY SECTION (TIMELINE BARU) -->
+<section id="journey" class="container-fluid py-custom">
+    <div class="container">
+        <h2 class="section-title text-center">My Journey</h2>
+        <div class="row justify-content-center mt-4">
+            <div class="col-lg-8">
+                <!-- Wrapper Timeline -->
+                <div class="timeline">
+                    <!-- Item 1: Bisnis -->
+                    <div class="timeline-item">
+                        <span class="timeline-date">Pondasi Awal</span>
+                        <div class="timeline-content">
+                            <h5>Memulai Bisnis Mandiri</h5>
+                            <p class="m-0 text-muted">Membangun kemandirian finansial dan belajar praktik bisnis nyata melalui pendirian serta pengelolaan <strong>brownie.ind</strong> secara konsisten selama lebih dari 4 tahun.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2: Organisasi -->
+                    <div class="timeline-item">
+                        <span class="timeline-date">Pengembangan Diri</span>
+                        <div class="timeline-content">
+                            <h5>Kepemimpinan & Organisasi</h5>
+                            <p class="m-0 text-muted">Mengasah *soft skill* dan tanggung jawab melalui KSPM. Dipercaya menjadi Sekretaris BPH serta memimpin tim sebagai Ketua Program Kerja.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3: Teknologi -->
+                    <div class="timeline-item">
+                        <span class="timeline-date">Eksplorasi Teknologi</span>
+                        <div class="timeline-content">
+                            <h5>Riset AI & Web Development</h5>
+                            <p class="m-0 text-muted">Mendalami metode *Deep Learning* untuk riset klasifikasi wajah, serta membangun kapabilitas *Web Development* untuk memperluas jangkauan digital bisnis.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4: Masa Depan -->
+                    <div class="timeline-item">
+                        <span class="timeline-date">Saat Ini</span>
+                        <div class="timeline-content">
+                            <h5>Riset MBKM & Langkah Profesional</h5>
+                            <p class="m-0 text-muted">Saat ini aktif menjalankan riset MBKM mengenai <em>Explainable AI</em> untuk citra medis (MRI Tumor Otak), sembari menggabungkan pengalaman manajerial bisnis dan organisasi untuk mulai berkontribusi secara profesional.</p>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Wrapper Timeline -->
+            </div>
+        </div>
+    </div>
 </section>
 
-<section id="journey" class="container py-5">
-<h2 class="section-title text-center">My Journey</h2>
-<p><strong>Awal:</strong> Memulai usaha kecil untuk kemandirian finansial.</p>
-<p><strong>Perkembangan:</strong> Dipercaya menjadi Sekretaris BPH KSPM.</p>
-<p><strong>Konsistensi:</strong> Menjalankan usaha lebih dari 4 tahun.</p>
-<p><strong>Saat Ini:</strong> Fokus memperkuat kompetensi dan mempersiapkan langkah profesional.</p>
+<!-- CONNECT SECTION -->
+<section id="connect" class="container-fluid py-custom text-center">
+    <div class="container">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="mb-5">Tertarik untuk berkolaborasi atau sekadar berdiskusi? Jangan ragu untuk menghubungi saya melalui email atau platform lainnya.</p>
+        
+        <p class="fs-5 mb-4 fw-bold" style="color: var(--primary);">davinvalerian9g@gmail.com</p>
+        
+        <div class="d-flex justify-content-center flex-wrap gap-3 mb-5">
+            <a href="https://www.linkedin.com/in/davin-valerian-06b7b73b4" target="_blank" class="btn btn-outline-light px-4 py-2">LinkedIn</a>
+            <a href="https://github.com/Davinvalerian21" target="_blank" class="btn btn-outline-light px-4 py-2">GitHub</a>
+            <a href="https://machung.ac.id/" target="_blank" class="btn btn-outline-light px-4 py-2">Universitas Ma Chung</a>
+            <a href="https://lockey-irawan.github.io/" target="_blank" class="btn btn-outline-light px-4 py-2">Project Manager</a>
+        </div>
+        
+        <a href="mailto:davinvalerian9g@gmail.com" class="btn btn-primary-custom btn-lg mt-2">Kirim Email Sekarang</a>
+    </div>
 </section>
 
-<section id="connect" class="container py-5 text-center">
-<h2 class="section-title">Connect</h2>
-<p>Email: davinvalerian9g@gmail.com</p>
-<p>
-<a href="https://www.linkedin.com/in/davin-valerian-06b7b73b4" target="_blank">LinkedIn</a> |
-<a href="https://github.com/Davinvalerian21" target="_blank">GitHub</a> |
-<a href="https://machung.ac.id/" target="_blank">Universitas Ma Chung</a> |
-<a href="https://lockey-irawan.github.io/" target="_blank">Project Manager</a>
-</p>
-<a href="mailto:davinvalerian9g@gmail.com" class="btn btn-primary m-2">Kirim Email</a>
-<a href="https://www.linkedin.com/in/davin-valerian-06b7b73b4" target="_blank" class="btn btn-dark m-2">Kunjungi LinkedIn</a>
-<a href="https://github.com/Davinvalerian21" target="_blank" class="btn btn-secondary m-2">Lihat GitHub</a>
-</section>
-
+<!-- FOOTER -->
 <footer class="text-center">
-<p>© 2026 Davin Valerian. All Rights Reserved.</p>
+    <p class="m-0">© 2026 Davin Valerian. All Rights Reserved.</p>
 </footer>
 
+<!-- Bootstrap JS Bundle -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script untuk Efek Mengetik Otomatis -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const targetElement = document.getElementById("typewriter-text");
+    const textToType = "DAVIN\nVALERIAN"; 
+    
+    let currentIndex = 0;
+    
+    function typeWriterEffect() {
+        let currentString = textToType.substring(0, currentIndex);
+        targetElement.innerHTML = currentString.replace(/\n/g, '<br>') + '<span class="cursor">|</span>';
+        
+        let typingSpeed = 150; 
+        
+        if (currentIndex === textToType.length) {
+            typingSpeed = 3000; // Jeda sebelum mengulang
+            currentIndex = 0;   // Langsung mengulang dari awal tanpa menghapus mundur
+        } else {
+            currentIndex++;
+        }
+        
+        setTimeout(typeWriterEffect, typingSpeed);
+    }
+    
+    setTimeout(typeWriterEffect, 500);
+});
+</script>
 </body>
 </html>
